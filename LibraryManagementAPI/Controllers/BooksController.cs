@@ -12,11 +12,11 @@ namespace LibraryManagementAPI.Controllers
     /*This attribute specifies that the class is an API controller, providing 
     automatic model state validation and routing support.*/
     [ApiController]
-    public class BookController : ControllerBase
+    public class BooksController : ControllerBase
     {
         private readonly LibraryContext _context;
 
-        public BookController(LibraryContext context)
+        public BooksController(LibraryContext context)
         {
             _context = context;
         }
