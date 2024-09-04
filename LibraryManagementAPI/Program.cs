@@ -1,5 +1,6 @@
 using LibraryManagementAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,3 +27,5 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 
+//Add-Migration InitialCreate
+//Update - Database
