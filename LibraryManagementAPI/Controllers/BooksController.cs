@@ -7,7 +7,7 @@ using System.Xml.Linq;
 namespace LibraryManagementAPI.Controllers
 {
 
-    [Route("api/[controller]")]
+    [Route("api/books")]
 
     /*This attribute specifies that the class is an API controller, providing 
     automatic model state validation and routing support.*/
@@ -45,6 +45,9 @@ namespace LibraryManagementAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Book>> addBook(Book book)
         {
+            // Ensuring the Id is not manually set by clearing it
+            book.Id = 0;
+
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(getBook), new { id = book.Id }, book);
@@ -72,7 +75,7 @@ namespace LibraryManagementAPI.Controllers
                 // Save changes
                 await _context.SaveChangesAsync();
 
-                return Ok($"Updated Successfully {existingBook}");
+                return Ok("Updated Successfully");
 
             }
         }
@@ -101,7 +104,6 @@ namespace LibraryManagementAPI.Controllers
 
 
 
-
-    }//main class
+    }
 
 }
