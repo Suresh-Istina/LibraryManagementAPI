@@ -23,77 +23,190 @@ namespace LibraryManagementAPI.Controllers
 
         //Get all Books
         [HttpGet]
+       
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(IEnumerable<Book>), 200)]
+        [ProducesResponseType(500)]
         public async Task<ActionResult<IEnumerable<Book>>> getBooks()
         {
-            return await _context.Books.ToListAsync();
+            try
+            {
+                var books = await _context.Books.ToListAsync();
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, new {
+                    message = "An error occurred while retrieving the book.",
+                    error = ex.Message });
+            }
         }
 
         //Get Book by ID
         [HttpGet("{id}")]
+
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(Book),200)]
+        [ProducesResponseType(typeof(object),404)]
+        [ProducesResponseType(500)]
         public async Task<ActionResult<Book>> getBook(int id)
         {
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
+            try
             {
-                return NotFound($"Book with ID {id} not found.");
+                var book = await _context.Books.FindAsync(id);
+                if (book == null)
+                {
+                    return NotFound(new { message = $"Book with ID {id} not found." });
+                }
+                else
+                    return book;
             }
-            else
-            return book;
+            catch (Exception ex)
+            {
+                
+                return StatusCode(500, new
+                {
+                    message = "An error occurred while retrieving the book.",
+                    error = ex.Message
+                });
+            }
         }
 
         //Create new Book
         [HttpPost]
-        public async Task<ActionResult<Book>> addBook(Book book)
+
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(Book),201)]
+        [ProducesResponseType(typeof(object),400)]
+        [ProducesResponseType(500)]
+                public async Task<ActionResult<Book>> addBook(Book book)
         {
-           
-            _context.Books.Add(book);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(getBook), new { id = book.Id }, book);
+            if (book == null)
+            {
+                return BadRequest(new { message = "Book data is invalid." });
+            }
+            // Validating required fields
+            if (string.IsNullOrWhiteSpace(book.Title) ||
+                string.IsNullOrWhiteSpace(book.Author) ||
+                string.IsNullOrWhiteSpace(book.Description))
+            {
+                return BadRequest(new { message = "Book data is invalid. Title, Author and Description are required." });
+            }
+
+            try
+            {
+                _context.Books.Add(book);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction(nameof(getBook), new { id = book.Id }, book);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, new
+                {
+                    message = "An error occurred while creating the book.",
+                    error = ex.Message
+                });
+            }
         }
 
 
         //Update Book by ID
         [HttpPut("{id}")]
-        public async Task<IActionResult> updateBook(int id, Book book)
+
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(Book),200)]
+        [ProducesResponseType(typeof(object),400)]
+        [ProducesResponseType(typeof(object), 404)]
+        [ProducesResponseType(500)]
+
+        public async Task<ActionResult<Book>> updateBook(int id, Book book)
         {
-            // Check if the book exists
-            var existingBook = await _context.Books.FindAsync(id);
-            if (existingBook == null)
+
+            
+            // Validating required fields
+            if (string.IsNullOrWhiteSpace(book.Title) ||
+                string.IsNullOrWhiteSpace(book.Author) ||
+                string.IsNullOrWhiteSpace(book.Description))
             {
-                return NotFound($"Book with ID {id} not found.");
+                return BadRequest(new { message = "Book data is invalid. Title, Author and Description are required." });
             }
 
-            else
+
+            try
             {
-                // Update the book's properties
-                existingBook.Title = book.Title;
-                existingBook.Author = book.Author;
-                existingBook.Description = book.Description;
+                // Checking if the book exists
+                var existingBook = await _context.Books.FindAsync(id);
+                if (existingBook == null)
+                {
+                    return NotFound(new { message = $"Book with ID {id} not found." });
+                }
 
-                // Save changes
-                await _context.SaveChangesAsync();
+                else
+                {
+                    // Update the book's properties
+                    existingBook.Title = book.Title;
+                    existingBook.Author = book.Author;
+                    existingBook.Description = book.Description;
 
-                return Ok("Updated Successfully");
+                    // Save changes
+                    await _context.SaveChangesAsync();
 
+                    return Ok(new { message = "Book updated successfully." });
+
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, new
+                {
+                    message = "An error occurred while updating the book.",
+                    error = ex.Message
+                });
             }
         }
 
         //delete book by id
         [HttpDelete("{id}")]
+
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(object), 200)]
+        [ProducesResponseType(typeof(object), 404)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> deleteBook(int id)
         {
-            // Check if the book exists
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
+            try
             {
-                return NotFound($"Book with ID {id} not found.");
+                // Check if the book exists
+                var book = await _context.Books.FindAsync(id);
+
+                if (book == null)
+                {
+                    return NotFound(new { message = $"Book with ID {id} not found." });
+                }
+                else
+                {
+                    // Remove the book
+                    _context.Books.Remove(book);
+                    await _context.SaveChangesAsync();
+                    return Ok(new { message = "Book deleted successfully." });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Remove the book
-                _context.Books.Remove(book);
-                await _context.SaveChangesAsync();
-                return Ok("Deleted Successfully.");
+
+                return StatusCode(500, new
+                {
+                    message = "An error occurred while deleting the book.",
+                    error = ex.Message
+                });
             }
 
         }
