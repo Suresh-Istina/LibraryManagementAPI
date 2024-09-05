@@ -45,9 +45,7 @@ namespace LibraryManagementAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Book>> addBook(Book book)
         {
-            // Ensuring the Id is not manually set by clearing it
-            book.Id = 0;
-
+           
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(getBook), new { id = book.Id }, book);
