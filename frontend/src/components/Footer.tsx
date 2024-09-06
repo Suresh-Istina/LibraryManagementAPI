@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <footer className="footer">
             <div className="container">
 
-                <p>&copy; 2024 Book Haven. All rights reserved.</p>
+                <p>&copy; 2024 Book Haven.  All rights reserved.</p>
                 
 
             </div>
