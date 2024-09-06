@@ -1,0 +1,99 @@
+﻿.header {
+    background: black;
+    color: white;
+    padding: 0.3rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-family: 'Lucida Handwriting';
+    
+}
+
+    .logo a {
+        color: white;
+        text-decoration: none;
+    }
+
+        .logo a:hover {
+            color: grey;
+        }
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+    padding-left: 0.3rem;
+    padding-right: 0.5rem;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+.header nav {
+    margin-left: auto;
+}
+
+    .header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+    }
+
+        .header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: Verdana;
+            font-size: 1.1rem;
+        }
+
+            .header nav ul li a:hover {
+                color: grey;
+            }
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: black;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease;
+        
+    }
+
+        .header nav.nav-open {
+            height: 120px;
+        }
+
+        .header nav ul {
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem;
+        }
+
+            .header nav ul li {
+                text-align: left;
+            }
+}
