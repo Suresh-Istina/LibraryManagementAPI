@@ -1,20 +1,28 @@
-﻿
-body {
-    margin: 0;
-    padding: 0;
+﻿.add-book-container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: white;
+    position:relative;
+}
+
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    align-self:center;
 }
 
 .add-book {
-    width: 100%;
-    max-width: 500px;
+    margin-top:5rem;
+    margin-bottom:5rem;
+    align-self:center;
+    width: 30%;
     padding: 20px;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,58 +31,81 @@ body {
     flex-direction: column;
 }
 
-    .add-book-form p {
-        color: white;
-        font-size: 24px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+.form-heading {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 .cus-label {
     color: white;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .cus-input {
     padding: 10px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-    .cus-input:focus {
+.cus-input-descrption {
+    height:80px;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    .cus-input:focus,
+    .cus-input-descrption:focus {
         outline: none;
         border-color: #007bff;
     }
 
+    .cus-input:disabled,
+    .cus-input-descrption:disabled {
+        background-color: #B2BEB5;
+    }
+
 .btn-book {
-    padding: 12px;
+    padding: 10px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 1rem;
+    width: 50%; 
+    align-self:center;
 }
 
     .btn-book:hover {
         background-color: #0056b3;
     }
 
+    .btn-book:disabled {
+        background-color: #B2BEB5;
+    }
 
 @media (max-width: 768px) {
     .add-book {
         padding: 15px;
         width: 90%;
+        
     }
 
     .btn-book {
         font-size: 14px;
     }
 
-    .cus-input {
+    .cus-input,
+    .cus-input-descrption {
         font-size: 14px;
     }
 }

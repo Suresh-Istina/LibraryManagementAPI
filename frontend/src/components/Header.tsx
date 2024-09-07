@@ -18,8 +18,9 @@ const Header: React.FC = () => {
                 </div>
                 <nav className={isOpen ? 'nav-open' : ''}>
                     <ul>
-                        <li><a href="/manage-books" onClick={toggleMenu}>Manage Books</a></li>
-                        <li><a href="/add-book" onClick={toggleMenu}>Add Books</a></li>
+                        <li><a href="/view-books" onClick={toggleMenu}>View Books</a></li>
+                        <li><a href="/add-book" onClick={toggleMenu}>Add Book</a></li>
+                        <li><a href="/edit-book" onClick={toggleMenu}>Update Book</a></li>
                     </ul>
                 </nav>
             </div>
