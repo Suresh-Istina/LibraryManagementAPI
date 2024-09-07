@@ -3,10 +3,10 @@ import axios from 'axios';
 const API_URL = 'http://localhost:5180/api/books';
 
 interface Book {
-    Id?: number;  
-    Title: 'string';
-    Author: 'string';
-    Description: 'string';
+    id?: number;  
+    title: string;
+    author: string;
+    description: string;
 }
 
 export const getBooks = async () => {
