@@ -8,6 +8,9 @@ This is a simple Library Management System built using ASP.NET Core, React, Type
 **Frontend runs on:** [http://localhost:5173/](http://localhost:5173/)  
 **Swagger UI runs on:** [http://localhost:5180/swagger/index.html](http://localhost:5180/swagger/index.html)
 
+
+
+
 Backend Setup
 
 1. Clone the repository:
@@ -38,6 +41,8 @@ Backend Setup
 6. Access Swagger UI after the application starts:
    [http://localhost:5180/swagger/index.html](http://localhost:5180/swagger/index.html)
 
+
+
  
  Frontend Setup
 
@@ -60,4 +65,3 @@ Backend Setup
    [http://localhost:5173/](http://localhost:5173/)
 ```
 
-You can paste this directly into your README.md file. It will be formatted correctly with code blocks for commands and links for the URLs.
