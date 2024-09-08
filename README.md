@@ -8,10 +8,7 @@ This is a simple Library Management System built using ASP.NET Core, React, Type
 **Frontend runs on:** [http://localhost:5173/](http://localhost:5173/)  
 **Swagger UI runs on:** [http://localhost:5180/swagger/index.html](http://localhost:5180/swagger/index.html)
 
-
-
-
-Backend Setup
+## Backend Setup
 
 1. Clone the repository:
    ```bash
@@ -39,12 +36,11 @@ Backend Setup
    ```
 
 6. Access Swagger UI after the application starts:
-   [http://localhost:5180/swagger/index.html](http://localhost:5180/swagger/index.html)
+   ```markdown
+   http://localhost:5180/swagger/index.html
+   ```
 
-
-
- 
- Frontend Setup
+## Frontend Setup
 
 1. Navigate to the frontend directory:
    ```bash
@@ -62,6 +58,8 @@ Backend Setup
    ```
 
 4. Access the frontend after the application starts:
-   [http://localhost:5173/](http://localhost:5173/)
+   ```markdown
+   http://localhost:5173/
+   ```
 ```
 
