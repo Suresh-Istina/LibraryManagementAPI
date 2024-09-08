@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = 'http://localhost:5180/api/books';
 
 interface Book {
-    id?: number;  
+    id?: number;  //optional because it's auto generated
     title: string;
     author: string;
     description: string;

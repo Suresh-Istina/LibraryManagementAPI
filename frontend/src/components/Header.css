@@ -52,7 +52,7 @@
     .header nav ul {
         list-style: none;
         display: flex;
-        gap: 1rem;
+        gap: 3rem;
     }
 
         .header nav ul li a {

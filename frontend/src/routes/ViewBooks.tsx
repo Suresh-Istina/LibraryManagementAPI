@@ -1,14 +1,15 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import EditBook from '../components/UpdateBook';
+import AllBooks from '../components/ViewBooks';
 
 
 const AddBook: React.FC = () => {
     return (
         <div>
             <Header />
-            <EditBook />
+            <AllBooks/>
+
             <Footer />
         </div>
     );
