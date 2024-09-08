@@ -1,8 +1,9 @@
 ﻿import React, { useState } from 'react';
 import '../styles/AddBook.css';
 import { createBook } from '../services/api';
-import { BookFormState } from '../interface/book';
-import { validateAddBookForm, FormErrors } from '../validators/formValidation';
+import { BookFormState } from '../interface/Book';
+import { FormErrors } from '../interface/FormErrors';
+import { validateAddBookForm } from '../validators/FormValidator';
 
 
 

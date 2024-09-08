@@ -1,8 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import '../styles/ViewBooks.css';
 import { getBooks, deleteBook } from '../services/api';
-import { BookFormState } from '../interface/book';
-
+import { BookFormState } from '../interface/Book';
 
 
 
@@ -27,7 +26,7 @@ const ViewBooks: React.FC = () => {
     const handleDelete = async (id: number) => {
         try {
             await deleteBook(id);
-           // window.alert("Book deleted successfully!");
+           
             // Updating the state to remove the deleted book without reloading the page
             setBooks(books.filter(book => book.id !== id));
         } catch (error) {

@@ -1,10 +1,6 @@
-// src/validators/formValidation.ts
+import { FormErrors } from '../interface/FormErrors';
 
-export interface FormErrors {
-    title?: string;
-    author?: string;
-    description?: string;
-}
+
 
 export const validateAddBookForm = (formData: { title: string; author: string; description: string }): FormErrors => {
     const errors: FormErrors = {};
@@ -13,11 +9,11 @@ export const validateAddBookForm = (formData: { title: string; author: string; d
         errors.title = 'Title is required.';
     }
 
-    if (!formData.author.trim()) {
+    else if (!formData.author.trim()) {
         errors.author = 'Author is required.';
     }
 
-    if (!formData.description.trim()) {
+    else if (!formData.description.trim()) {
         errors.description = 'Description is required.';
     }
 

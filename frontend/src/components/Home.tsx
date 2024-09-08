@@ -1,14 +1,11 @@
 ﻿import React from 'react';
 import '../styles/Home.css';
+import { ImageCardProps } from '../interface/ImageCardProps';
 import Image1 from "../assets/book1.jpg";
 import Image2 from "../assets/book2.jpg";
 import Image3 from "../assets/book3.jpg";
 
-interface ImageCardProps {
-    imageUrl: string;
-    title: string;
-    author: string;
-}
+
 
 const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, author }) => {
     return (

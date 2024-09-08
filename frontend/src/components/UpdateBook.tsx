@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/AddBook.css';
 import { updateBook, getBooks } from '../services/api';
-import { BookFormState } from '../interface/book';
-import { validateAddBookForm, FormErrors } from '../validators/formValidation';
-
-
+import { BookFormState } from '../interface/Book';
+import { FormErrors } from '../interface/FormErrors';
+import { validateAddBookForm } from '../validators/FormValidator';
 
 
 const UpdateBook: React.FC = () => {
