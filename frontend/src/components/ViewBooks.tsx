@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react';
-import './ViewBooks.css';
+import '../styles/ViewBooks.css';
 import { getBooks, deleteBook } from '../services/api';
 import { BookFormState } from '../interface/book';
 

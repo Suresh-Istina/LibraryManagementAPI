@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import './Header.css';
+import '../styles/Header.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header: React.FC = () => {
