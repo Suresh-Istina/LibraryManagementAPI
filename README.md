@@ -3,7 +3,8 @@
 
 # Library Management System
 
-This is a simple Library Management System built using ASP.NET Core, React, TypeScript, and SQLite with Entity Framework. Documentation is available in Swagger and can be found in the `api-documentation.pdf` PDF inside the main folder.
+This is a simple Library Management System built using ASP.NET Core, React, TypeScript, and SQLite with Entity Framework. API documentation has been created using Swagger and can be found in the `api-documentation.pdf` PDF inside the main folder.
+
 ```markdown
 Frontend runs on :  http://localhost:5173/
 Swagger UI runs on :   http://localhost:5180/swagger/index.html
